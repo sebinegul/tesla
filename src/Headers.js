@@ -2,8 +2,12 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import MenuIcon from "@material-ui/icons/Menu";
 import CloseIcon from "@material-ui/icons/Close";
+import { selectCars } from "./features/car/carSlice";
+import { useSelector } from "react-redux";
 function Headers() {
   const [burgerStatus, setBurgerStatus] = useState(false);
+  const cars = useSelector(selectCars);
+  console.log(cars);
   const showMenuHandler = () => {
     setBurgerStatus(true);
   };
@@ -16,10 +20,12 @@ function Headers() {
         <img src="/images/logo.svg" />
       </a>
       <Menu>
-        <a href="#">Model S</a>
-        <a href="#">Model X</a>
-        <a href="#">Model Y</a>
-        <a href="#">Model 3</a>
+        {cars &&
+          cars.map((car, index) => (
+            <a key={index} href="#">
+              {car}{" "}
+            </a>
+          ))}
       </Menu>
       <RightMenu>
         <a href="#">Shop</a>
@@ -30,6 +36,13 @@ function Headers() {
         <CloseWrapper>
           <CustomClose onClick={menuClose} />
         </CloseWrapper>
+        {cars &&
+          cars.map((car, index) => (
+            <li key={index}>
+              {" "}
+              <a href="">{car}</a>
+            </li>
+          ))}
         <li>
           <a href="" />
           Existing Inventory
@@ -50,10 +63,7 @@ function Headers() {
           <a href="" />
           Roadaster
         </li>
-        <li>
-          <a href="" />
-          Existing Inventory
-        </li>
+       
         <li>
           <a href="" />
           Existing Inventory
@@ -82,7 +92,9 @@ const Menu = styled.div`
   align-items: center;
   justify-content: center;
   flex: 1;
-
+  @media (max-width: 768px) {
+    display: none;
+  }
   a {
     font-weight: 600;
     text-transform: uppercase;
@@ -108,13 +120,14 @@ const BurgerMenu = styled.div`
   right: 0;
   background-color: #f5f5f5;
   height: 100vh;
-  padding: 20px 10px;
+  padding: 10px;
   list-style: none;
   width: 300px;
   z-index: 99;
   cursor: pointer;
   transform: ${(props) => (props.show ? "translateX(0)" : "translateX(100%)")};
   transition: all 0.3s cubic-bezier(0.39, 0.575, 0.565, 1);
+  
   li {
     padding: 15px 10px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
