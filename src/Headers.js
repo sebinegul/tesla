@@ -44,30 +44,27 @@ function Headers() {
             </li>
           ))}
         <li>
-          <a href="" />
-          Existing Inventory
+          <a href="" >
+          Existing Inventory </a>
         </li>
         <li>
-          <a href="" />
-          Used Inventory
+          <a href="" >
+          Used Inventory</a>
         </li>
         <li>
-          <a href="" />
-          Trade-In
+          <a href="" >
+          Trade-In </a>
         </li>
         <li>
-          <a href="" />
-          Cybertruck
+          <a href="" >
+          Cybertruck </a>
         </li>
         <li>
-          <a href="" />
-          Roadaster
+          <a href="" >
+          Roadaster </a>
         </li>
        
-        <li>
-          <a href="" />
-          Existing Inventory
-        </li>
+       
       </BurgerMenu>
     </Container>
   );
@@ -83,7 +80,7 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px;
+  padding: 10px 15px;
   min-height: 60px;
   z-index: 1;
 `;
